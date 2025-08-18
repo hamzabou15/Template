@@ -10,7 +10,6 @@ const roboto = Roboto({
   subsets: ['latin'],
   weight: ['100', '300', '400', '500', '700', '900']
 });
-
 export const metadata: Metadata = {
   title: "Electricien Nice Expert | Travaux & Dépannage Électrique à Nice",
   description: "Electricien à Nice pour vos installations, rénovations et dépannages électriques. Intervention rapide, professionnelle et conforme aux normes.",
