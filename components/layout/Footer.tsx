@@ -107,8 +107,8 @@ const Footer = () => {
                                     <MdLocalPhone className="text-xl p-1.5 bg-[#f25000] rounded-full hover:bg-white hover:text-[#191c25] transition" />
                                     <div>
                                         <h4 className="font-semibold text-sm">Phones :</h4>
-                                        <p className="text-[#ffffff91] text-xs">+33 693 78 88 07</p>
-                                        <p className="text-[#ffffff91] text-xs">+33 693 78 88 07</p>
+                                        <p className="text-[#ffffff91] text-xs">+33756935200</p>
+                                        <p className="text-[#ffffff91] text-xs">+33756935200</p>
                                     </div>
                                 </div>
                             </div>

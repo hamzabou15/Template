@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Contactez Electricien Nice Expert | Demande de devis ou intervention",
         description: "Prenez contact avec Electricien Nice Expert pour vos travaux ou urgences électriques à Nice.",
-        url: "https://electricien-nice.netlify.app/contact",
+        url: "https://electriciennice-expert.fr/contact",
         siteName: "Electricien Nice Expert",
         locale: "fr_FR",
         type: "website",

@@ -7,7 +7,7 @@ const SchemaLocalBusiness = () => {
     "name": "Electricien Nice Expert",
     "image": "https://electricien-nice.fr/images/electricien-nice-intervention.webp",
     "url": "https://electricien-nice.fr",
-    "telephone": "+33 6 00 00 00 00",
+    "telephone": "+33756935200",
     "priceRange": "€€",
     "description": "Electricien certifié à Nice pour dépannages, installations électriques, mises aux normes et rénovations. Intervention rapide et garantie 7j/7.",
     "address": {

@@ -87,10 +87,10 @@ const Header = () => {
 
                 {/* Contact & Devis */}
                 <div className="hidden lg:flex items-center gap-6">
-                    <a href="tel:+33693788807" aria-label="Appeler le numéro +33 693 78 88 07"
+                    <a href="tel:+33693788807" aria-label="Appeler le numéro +33756935200"
                         className="flex items-center gap-2 text-sm font-semibold group">
                         <MdLocalPhone className=" rounded-full w-8 h-8 p-2 text-[#e03a00] bg-[#edeff5]" />
-                        <span className="group-hover:underline ">+33 693 78 88 07</span>
+                        <span className="group-hover:underline ">+33756935200</span>
                     </a>
                     <Button type="button" variant="submit" size="lg">
                         <Link className="flex gap-2" href={"/contact"}>
@@ -180,7 +180,7 @@ const Header = () => {
                         <div className="mt-4 flex flex-col gap-2">
                             <div className="flex items-center gap-2 text-sm font-semibold">
                                 <MdLocalPhone className="rounded-full w-8 h-8 p-2 bg-[#edeff5]" />
-                                <span>+33 693 78 88 07</span>
+                                <span>+33756935200</span>
                             </div>
                             <button
                                 className="bg-[#f25000] text-white py-2 rounded-md hover:bg-[#e03a00] flex items-center justify-center gap-2"

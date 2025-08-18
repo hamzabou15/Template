@@ -10,19 +10,20 @@ const roboto = Roboto({
   subsets: ['latin'],
   weight: ['100', '300', '400', '500', '700', '900']
 });
+
 export const metadata: Metadata = {
   title: "Electricien Nice Expert | Travaux & Dépannage Électrique à Nice",
   description: "Electricien à Nice pour vos installations, rénovations et dépannages électriques. Intervention rapide, professionnelle et conforme aux normes.",
   keywords: ["électricien Nice", "travaux électriques", "dépannage électrique", "installations électriques", "mise aux normes", "électricien urgence Nice"],
-  authors: [{ name: "Electricien Nice Expert", url: "https://electricien-nice.netlify.app" }],
+  authors: [{ name: "Electricien Nice Expert", url: "https://electriciennice-expert.fr" }],
   creator: "Electricien Nice Expert",
   publisher: "Electricien Nice Expert",
-  metadataBase: new URL("https://electricien-nice.netlify.app"),
+  metadataBase: new URL("https://electriciennice-expert.fr"),
 
   openGraph: {
     title: "Electricien Nice Expert | Travaux & Dépannage Électrique à Nice",
     description: "Entreprise spécialisée dans les travaux électriques à Nice. Service rapide et professionnel.",
-    url: "https://electricien-nice.netlify.app", // a changer
+    url: "https://electriciennice-expert.fr", // a changer
     siteName: "Electricien Nice Expert",
     locale: "fr_FR",
     type: "website",
