@@ -1,85 +1,101 @@
-import React from 'react';
-import { FaStar } from 'react-icons/fa';
-import { Button } from '../ui/button';
-import { GoArrowRight } from 'react-icons/go';
-import Image from 'next/image';
-import Link from 'next/link';
+import { ArrowRightIcon, PhoneCallIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+import { Button } from "../ui/button";
+import { FaStar } from "react-icons/fa";
 
 const Hero = () => {
-    return (
-        <section
-            className="w-full grid grid-cols-1 relative text-white overflow-hidden bg-[#1b1e3f]  
-                      md:grid-cols-2  h-full 
-            "
-            id="hero-electricien-nice"
-            aria-label="Électricien urgence et dépannage à Nice"
-        >
-            <div className="relative h-full w-full max-md:h-[500px]">
-                <Image
-                    src="/images/Electricien-niceV2.webp"
-                    alt="Électricien intervenant à Nice pour pannes et remises aux normes"
-                    fill
-                    className="object-cover object-top"
-                    priority
-                    fetchPriority="high"
-                    sizes="100vw"
-                />
+  return (
+    <section className="relative w-full grid grid-cols-1 md:grid-cols-2 h-full text-white bg-[#0a0a0f] overflow-hidden">
+      {/* IMAGE avec overlay gradient */}
+      <div className="relative h-[500px] md:h-full">
+        <Image
+          src="/images/electricien-a-nice.webp"
+          alt="Électricien en intervention à Nice"
+          fill
+          className="object-cover object-center scale-105"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#0a0a0f]/70 via-[#0a0a0f]/40 to-transparent" />
+      </div>
 
+      {/* CONTENT */}
+      <div className="relative px-8 py-16 md:py-24 lg:px-20 flex flex-col justify-center gap-8 bg-gradient-to-br from-[#0a0a0f] via-[#141428] to-[#1b1e3f]">
+        <div className="max-w-2xl mx-auto flex flex-col gap-6 text-center md:text-left">
+          
+          {/* Tagline */}
+          <span className="px-4 py-1 text-xs font-semibold uppercase tracking-wider rounded-full bg-gradient-to-r from-[#f25000] to-[#ff7d33] text-white w-fit mx-auto md:mx-0 shadow-lg">
+            ⚡ Artisan Électricien Certifié
+          </span>
+
+          {/* Titre principal */}
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+            Votre <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f25000] to-[#ffb347]">Électricien</span> de Confiance <br /> à Nice & Alentours
+          </h1>
+
+          {/* Description */}
+          <p className="text-lg text-gray-300 leading-relaxed max-w-xl mx-auto md:mx-0">
+            Dépannage <strong>rapide</strong>, installations <strong>aux normes</strong> et devis <strong>100% gratuits</strong>.  
+            Nous intervenons en moins de <span className="font-semibold text-[#ff7d33]">30 minutes</span>, 24h/24 et 7j/7.
+          </p>
+
+          {/* LISTE AVANTAGES avec icônes plus modernes */}
+          <ul className="grid gap-3 text-gray-200 text-sm md:text-base">
+            <li className="flex items-center gap-3">
+              <span className="w-6 h-6 rounded-full bg-[#f25000]/10 text-[#f25000] flex items-center justify-center">⚡</span>
+              Intervention en <strong>moins de 30 minutes</strong>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="w-6 h-6 rounded-full bg-[#f25000]/10 text-[#f25000] flex items-center justify-center">⏰</span>
+              Disponible <strong>24h/24 & 7j/7</strong>
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="w-6 h-6 rounded-full bg-[#f25000]/10 text-[#f25000] flex items-center justify-center">📍</span>
+              <strong>Artisan local</strong> basé à Nice
+            </li>
+            <li className="flex items-center gap-3">
+              <span className="w-6 h-6 rounded-full bg-[#f25000]/10 text-[#f25000] flex items-center justify-center">💰</span>
+              <strong>Prix transparents</strong> et sans surprise
+            </li>
+          </ul>
+
+          {/* CTA */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-6 w-full">
+            <Link href="/devis-electricien-gratuit" className="flex-1">
+              <Button
+                size="lg"
+                className="w-full font-semibold text-lg bg-gradient-to-r from-[#f25000] to-[#ff7d33] hover:opacity-90 shadow-lg shadow-[#f25000]/40 rounded-2xl transition-all"
+              >
+                Demander un Devis Gratuit
+                <ArrowRightIcon className="ml-2" size={20} />
+              </Button>
+            </Link>
+            <Link href="tel:+33756935200" className="flex-1">
+              <Button
+                size="lg"
+                className="w-full font-semibold text-lg bg-white/10 border border-white/20 hover:bg-white/20 text-white rounded-2xl transition-all backdrop-blur-md"
+              >
+                <PhoneCallIcon className="mr-2" size={20} />
+                Nous Appeler
+              </Button>
+            </Link>
+          </div>
+
+          {/* Avis clients moderne */}
+          <div className="flex flex-col items-center md:items-start gap-2 mt-8">
+            <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-md shadow-md">
+              {[...Array(5)].map((_, i) => (
+                <FaStar key={i} className="text-[#ffc107]" />
+              ))}
+              <span className="ml-1 font-semibold">4.95/5</span>
             </div>
-
-            <div className="relative px-16 py-28 z-10 flex flex-col gap-6 bg-cover bg-center max-lg:px-12 md:py-20  max-sm:py-16 max-sm:px-7">
-                <div className="flex flex-col items-start gap-7 max-md:items-center xl:max-w-[1300px]">
-                    <p className="text-[12px] font-semibold text-[#f25000] uppercase 
-                        tracking-[7px] max-sm:text-[12px] max-md:text-[10px] max-md:text-center">
-                        Électricien certifié à Nice
-                    </p>
-
-                    <h1 className="text-[54px] font-bold tracking-[-2px] leading-tight sm:text-[40px] lg:text-[54px] max-sm:text-[32px] max-sm:tracking-normal max-md:text-center">
-                        Urgence électricité à Nice – Réparation rapide 7j/7
-                    </h1>
-
-                    <p className="text-[17px] font-light text-[#ffffffb7] leading-8 sm:text-[14px] lg:text-[17px]max-sm:text-base max-md:text-center ">
-                        Vous faites face à une <strong>coupure générale ou partielle</strong> ? Notre <strong>électricien en urgence à Nice</strong> intervient rapidement pour tout dépannage :
-                        <strong> remplacement de tableau électrique</strong>, <strong>mise en conformité NF C 15-100</strong>, disjoncteur HS ou panne soudaine.
-                        Intervention 7j/7 – service certifié et fiable.
-                    </p>
-
-                    <div className="flex gap-5 items-start mt-4 max-sm:flex-col sm:items-start max-md:items-center">
-                        <h3 className="text-[40px] font-semibold leading-9 sm:text-4xl sm:leading-8 lg:leading-9 lg:text-[40px] ">4.95</h3>
-                        <div className="flex flex-col items-start gap-1 max-sm:justify-center max-md:items-center">
-                            <div className="flex items-center gap-1 text-[16px] text-[#edae00]">
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                                <FaStar />
-                            </div>
-                            <span className="text-[16px] font-medium sm:text-[14px] lg:text-[16px] max-sm:text-center">
-                                Note Google (basée sur 320 avis clients satisfaits à Nice)
-                            </span>
-                        </div>
-                    </div>
-
-                    <div className="flex justify-start mt-7 max-sm:justify-center max-sm:mx-auto">
-                        <Link href="/contact">
-                            <Button
-                                variant="submit"
-                                size="xlg"
-                                className="min-w-[200px] flex items-center gap-2 font-medium "
-                            >
-
-                                Demander un devis gratuit
-                                <GoArrowRight
-                                    className="text-[90px] w-10 h-10"
-                                    style={{ width: '24px', height: '24px' }}
-                                />
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-            </div>
-        </section>
-    );
+            <span className="text-sm text-gray-400">Basé sur 320+ avis vérifiés Google</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Hero;

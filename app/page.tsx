@@ -1,82 +1,94 @@
-import Head from "next/head";
-import Hero from "@/components/home/Hero";
-import About from "@/components/home/About";
-import ServiceCard from "@/components/home/ServiceCard";
-import SchemaLocalBusiness from "@/components/schema-local-business";
-import About2 from "@/components/home/About2";
-import StatsCard from "@/components/home/StatsCard";
-import Services from "@/components/home/services";
-import Reviews from "@/components/home/reviews";
+import AboutSection from '@/components/home/AboutSection';
+import CTASection from '@/components/home/CTASection';
+import FAQSection from '@/components/home/FAQSection';
+import Hero from '@/components/home/Hero';
+import RecentWorkSection from '@/components/home/RecentWorkSection';
+import RichContentSection from '@/components/home/RichContentSection';
+import ServiceAreas from '@/components/home/ServiceAreas';
+import ServiceGrid from '@/components/home/ServiceGrid';
+import StatsSection from '@/components/home/StatsSection';
+import Testimonials from '@/components/home/Testimonials';
+import WhyChooseUs from '@/components/home/WhyChooseUs';
+import SchemaLocalBusiness from '@/components/SEO/SchemaLocalBusiness';
+import type { Metadata } from 'next';
+
+
+export const metadata: Metadata = {
+  title: "Électricien Nice | Dépannage Urgence 24/7 - Devis Gratuit & Sans Engagement | Besoin d'un Électricien Fiable à Nice ?",
+  description: "🔌 Électricien de confiance à Nice pour dépannage urgent 24h/24, installation et rénovation électrique. Artisan qualifié, prix raisonnables. Intervention rapide en 30 min ! Devis gratuit immédiat.",
+  keywords: "électricien nice, dépannage électrique nice, urgence électricien nice, artisan électricien nice, électricien pas cher nice, devis électricité nice, rénovation électrique nice, installation électrique nice",
+  authors: [{ name: "Electricien Nice Expert" }],
+  metadataBase: new URL('https://electriciennice-expert.fr'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: "Électricien Nice | Urgence 24/7 - Devis Gratuit",
+    description: "Électricien de confiance à Nice pour dépannage urgent 24h/24. Artisan qualifié, prix raisonnables. Intervention rapide.",
+    url: 'https://electriciennice-expert.fr',
+    siteName: 'Electricien Nice Expert',
+    images: [
+      {
+        url: '/og-image-electricien-nice.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Electricien Nice Expert - Intervention Urgence',
+      },
+    ],
+    locale: 'fr_FR',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  other: {
+    "geo.region": "FR-PAC",
+    "geo.placename": "Nice",
+    "geo.position": "43.710173;7.261953",
+    "ICBM": "43.710173, 7.261953",
+  },
+};
 
 export default function HomePage() {
   return (
     <>
-      <Head>
-        {/* Balises HTML SEO */}
-        <title>Électricien à Nice - Intervention 7j/7 | Devis Gratuit</title>
-        <meta
-          name="description"
-          content="Électricien certifié à Nice pour vos dépannages, installations électriques, mises aux normes. Intervention rapide 7j/7. Devis gratuit et travaux garantis."
-        />
-        <meta name="robots" content="index, follow" />
-        <meta name="keywords" content="électricien Nice, dépannage électrique Nice, installation électrique Nice, mise aux normes Nice, urgence électricien Nice" />
-        <link rel="canonical" href="https://electricien-nice.fr" />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:title" content="Électricien à Nice - Intervention rapide 7j/7" />
-        <meta
-          property="og:description"
-          content="Dépannage électrique à Nice par un artisan local certifié. Intervention rapide et efficace. Devis gratuit. Disponible 7j/7."
-        />
-        <meta property="og:image" content="https://electricien-nice.fr/images/og-image.jpg" />
-        <meta property="og:url" content="https://electricien-nice.fr" />
-        <meta property="og:type" content="website" />
-
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Électricien à Nice - Intervention rapide 7j/7" />
-        <meta name="twitter:description" content="Besoin d’un dépannage électrique à Nice ? Contactez un électricien certifié disponible 7j/7." />
-        <meta name="twitter:image" content="https://electricien-nice.fr/images/og-image.jpg" />
-      </Head>
-
-      {/* Schema.org LocalBusiness JSON-LD */}
       <SchemaLocalBusiness />
-
-      {/* HEADER / HERO */}
-      <header>
-        <Hero />
-      </header>
-
-      {/* CONTENU PRINCIPAL */}
-      <main className="flex flex-col items-center justify-center w-full">
-        {/* SECTION À PROPOS */}
-        <section id="a-propos" aria-label="Présentation de l'entreprise">
-          <About />
-        </section>
-
-        {/* SECTION SERVICES */}
-        <section id="services" aria-label="Services proposés par l’électricien à Nice">
-          <ServiceCard />
-        </section>
-        <section
-          id="a-propos2"
-          aria-label="Services proposés par l’électricien à Nice"
-          className="w-full"
-        >
-          <About2 />
-        </section>
-        <section id="stats" aria-label="Statistique de l'entreprise" className="w-full bg-white">
-          <StatsCard />
-        </section>
-        <section id="stats" aria-label="Services Electriciens" className="w-full">
-          <Services />
-        </section>
-        <section id="reviews" aria-label="Reviews Electriciens sur Nice" className="w-full overflow-hidden">
-          <Reviews />
-        </section>
-      </main>
-
-
-    </>
+      <Hero />
+      <ServiceGrid />
+      <WhyChooseUs />
+      <AboutSection />
+      <RichContentSection />
+      <RecentWorkSection />
+      <ServiceAreas />
+      <StatsSection />
+      <Testimonials />
+      <FAQSection />
+      <CTASection />
+    </ >
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

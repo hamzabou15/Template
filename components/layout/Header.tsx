@@ -1,201 +1,293 @@
-"use client"
+// components/Header.tsx
+'use client';
 
-import Image from "next/image"
-import React, { useState } from "react"
-import {
-    NavigationMenu,
-    NavigationMenuContent,
-    NavigationMenuItem,
-    NavigationMenuLink,
-    NavigationMenuList,
-    NavigationMenuTrigger,
-    navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu"
-import Link from "next/link"
-import { MdLocalPhone } from "react-icons/md"
-import { IoNewspaperOutline } from "react-icons/io5"
-import { HiMenu, HiX } from "react-icons/hi"
-import { Button } from "../ui/button"
-import { servicesData } from "@/lib/data"
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { Phone, Menu, X, ChevronDown, Home, Wrench, FolderOpen, FileText, MapPin, User, Mail, LucideIcon } from 'lucide-react';
+import Image from 'next/image';
 
-
-const Header = () => {
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-    const [mobileServicesOpen, setMobileServicesOpen] = useState(false)  // État sous-menu services mobile
-
-    return (
-        <header className="w-full shadow-bottom z-20 relative bg-white  ">
-            <div className="flex items-center justify-between px-4 md:px-8 py-4  max-w-[1300px] m-auto">
-                <Link href="/">
-                    <Image src="/images/logo-electrcien-nice.svg" alt="Logo" width={160} height={50} />
-                </Link>
-
-                {/* Mobile Burger */}
-                <button
-                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                    className="lg:hidden text-2xl"
-                    aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-                >
-                    {mobileMenuOpen ? <HiX /> : <HiMenu />}
-                </button>
-
-                {/* Desktop Nav */}
-                <div className="hidden lg:flex items-center gap-6">
-                    <NavigationMenu>
-                        <NavigationMenuList className="flex items-center gap-4">
-                            <NavigationMenuItem>
-                                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                    <Link className="font-semibold" href="/">Accueil</Link>
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-
-                            <NavigationMenuItem>
-                                <NavigationMenuTrigger className="font-semibold">
-                                    <Link className="font-semibold" href="/services">Services</Link>
-                                </NavigationMenuTrigger>
-                                <NavigationMenuContent>
-                                    <ul className="grid gap-2 p-4 w-[250px]">
-                                        {servicesData.map((service, index) => (
-                                            <li key={index}>
-                                                <Link href={`/services/${service.slug}`} className="block px-2 py-1 hover:text-orange-500">
-                                                    {service.title}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </NavigationMenuContent>
-                            </NavigationMenuItem>
-
-                            <NavigationMenuItem>
-                                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                    <Link className="font-semibold" href="/projets">Projets</Link>
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                    <Link className="font-semibold" href="/a-propos">À propos</Link>
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                            <NavigationMenuItem>
-                                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                    <Link className="font-semibold" href="/contact">Contact</Link>
-                                </NavigationMenuLink>
-                            </NavigationMenuItem>
-                        </NavigationMenuList>
-                    </NavigationMenu>
-                </div>
-
-                {/* Contact & Devis */}
-                <div className="hidden lg:flex items-center gap-6">
-                    <a href="tel:+33693788807" aria-label="Appeler le numéro +33756935200"
-                        className="flex items-center gap-2 text-sm font-semibold group">
-                        <MdLocalPhone className=" rounded-full w-8 h-8 p-2 text-[#e03a00] bg-[#edeff5]" />
-                        <span className="group-hover:underline ">+33756935200</span>
-                    </a>
-                    <Button type="button" variant="submit" size="lg">
-                        <Link className="flex gap-2" href={"/contact"}>
-                            <IoNewspaperOutline />
-                            <span>Devis</span>
-                        </Link>
-                    </Button>
-                </div>
-            </div>
-
-            {/* Mobile Menu */}
-            {mobileMenuOpen && (
-                <div className="lg:hidden px-4 pb-4">
-                    <nav className="flex flex-col gap-3">
-                        <Link
-                            href="/"
-                            className="text-sm font-semibold"
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            Accueil
-                        </Link>
-
-                        {/* Sous-menu Services mobile */}
-                        <button
-                            onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                            className="flex justify-between items-center text-sm font-semibold w-full px-2 py-1 bg-gray-100 rounded-md"
-                            aria-expanded={mobileServicesOpen}
-                            aria-controls="mobile-services-submenu"
-                        >
-                            <span>Services</span>
-                            <svg
-                                className={`w-5 h-5 transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : "rotate-0"
-                                    }`}
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                                viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg"
-                                aria-hidden="true"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        {/* Liste des services dans le sous-menu mobile */}
-                        {mobileServicesOpen && (
-                            <ul
-                                id="mobile-services-submenu"
-                                className="pl-4 border-l border-gray-300 mt-1 space-y-1"
-                            >
-                                {servicesData.map((service, index) => (
-                                    <li key={index}>
-                                        <Link
-                                            href={`/services/${service.slug}`}
-                                            className="block text-sm px-2 py-1 hover:text-orange-500"
-                                            onClick={() => setMobileMenuOpen(false)}
-                                        >
-                                            {service.title}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-
-                        <Link
-                            href="/projets"
-                            className="text-sm font-semibold"
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            Projets
-                        </Link>
-                        <Link
-                            href="/a-propos"
-                            className="text-sm font-semibold"
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            À propos
-                        </Link>
-                        <Link
-                            href="/contact"
-                            className="text-sm font-semibold"
-                            onClick={() => setMobileMenuOpen(false)}
-                        >
-                            Contact
-                        </Link>
-
-                        <div className="mt-4 flex flex-col gap-2">
-                            <div className="flex items-center gap-2 text-sm font-semibold">
-                                <MdLocalPhone className="rounded-full w-8 h-8 p-2 bg-[#edeff5]" />
-                                <span>+33756935200</span>
-                            </div>
-                            <button
-                                className="bg-[#f25000] text-white py-2 rounded-md hover:bg-[#e03a00] flex items-center justify-center gap-2"
-                                onClick={() => setMobileMenuOpen(false)}
-                            >
-                                <IoNewspaperOutline />
-                                <span>Devis</span>
-                            </button>
-                        </div>
-                    </nav>
-                </div>
-            )}
-
-        </header>
-    )
+interface NavigationItem {
+    name: string;
+    href: string;
+    icon: LucideIcon;
+    submenu?: SubMenuItem[];
 }
 
-export default Header
+interface SubMenuItem {
+    name: string;
+    href?: string;
+    submenu?: NestedSubMenuItem[];
+}
+
+interface NestedSubMenuItem {
+    name: string;
+    href: string;
+}
+
+export default function Header() {
+    const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+    const pathname = usePathname();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 10);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const toggleSubmenu = (menu: string) => {
+        setOpenSubmenu(openSubmenu === menu ? null : menu);
+    };
+
+    const closeAllMenus = () => {
+        setIsOpen(false);
+        setOpenSubmenu(null);
+    };
+
+    const navigation: NavigationItem[] = [
+        { name: 'Accueil', href: '/', icon: Home },
+        {
+            name: 'Services',
+            href: '/services',
+            icon: Wrench,
+            submenu: [
+                { name: 'Dépannage domestique', href: '/services/depannage-electrique-domestique-nice' },
+                { name: 'Dépannage urgence', href: '/services/depannage-urgence-electrique-nice' },
+                { name: 'Domotique & Automatismes', href: '/services/domotique-automatisme-nice' },
+                { name: 'Climatisation & Ventilation', href: '/services/installation-climatisation-ventilation-nice' },
+                { name: 'Éclairage & Luminaires', href: '/services/installation-eclairage-luminaires-nice' },
+                { name: 'Installation électrique', href: '/services/installation-electrique-nice' },
+                { name: 'Prises & Tableaux', href: '/services/installation-prise-tableau-electrique-nice' },
+                { name: 'Volets & Portails', href: '/services/installation-volets-portails-electriques-nice' },
+                { name: 'Mise aux normes', href: '/services/mise-aux-normes-electrique-nice' },
+                { name: 'Rénovation électrique', href: '/services/renovation-electrique-nice' },
+            ]
+        },
+        {
+            name: 'Portfolio',
+            href: '/portfolio',
+            icon: FolderOpen,
+            submenu: [
+                { name: 'Installation complète', href: '/portfolio/installation-electrique-complete-hauteurs-nice' },
+                { name: 'Rénovation villa', href: '/portfolio/renovation-electrique-villa-bellet' },
+                { name: 'Mise aux normes cuisine', href: '/portfolio/mise-aux-normes-cuisine-feric' },
+                { name: 'Bornes recharge VE', href: '/portfolio/installation-bornes-recharge-ve' },
+                { name: 'Éclairage extérieur', href: '/portfolio/eclairage-exterieur-villa' },
+                { name: 'Bureau commercial', href: '/portfolio/renovation-bureau-commercial' },
+            ]
+        },
+        {
+            name: 'Zones',
+            href: '/zones',
+            icon: MapPin,
+            submenu: [
+                {
+                    name: 'Nice',
+                    submenu: [
+                        { name: 'Nice Centre', href: '/zones/nice/electricien-nice-centre' },
+                        { name: 'Vieux Nice', href: '/zones/nice/electricien-vieux-nice' },
+                        { name: 'Cimiez', href: '/zones/nice/electricien-cimiez' },
+                    ]
+                },
+                {
+                    name: 'Villes alentour',
+                    submenu: [
+                        { name: 'Cagnes-sur-Mer', href: '/zones/nice/electricien-cagnes-sur-mer' },
+                        { name: 'Saint-Laurent-du-Var', href: '/zones/nice/electricien-saint-laurent-du-var' },
+                        { name: 'Antibes', href: '/zones/nice/electricien-antibes' },
+                    ]
+                }
+            ]
+        },
+        { name: 'Blog', href: '/blog', icon: FileText },
+        { name: 'À propos', href: '/a-propos', icon: User },
+        { name: 'Contact', href: '/contact', icon: Mail },
+    ];
+
+    return (
+        <header className={`sticky top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-white/95 backdrop-blur-sm py-4'}`}>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex justify-between items-center">
+                    {/* Logo */}
+                    <Link href="/"  onClick={closeAllMenus}>
+                        <Image
+                            src="/images/logo-electrcien-nice.svg"
+                            alt="Logo Électricien Nice Expert"
+                            width={150}
+                            height={50}
+                            className="h-10 w-[130px]"
+                        />
+                    </Link>
+                    
+
+                    {/* Desktop Navigation */}
+                    <nav className="hidden lg:flex items-center space-x-1">
+                        {navigation.map((item) => (
+                            <div key={item.name} className="relative group">
+                                <Link
+                                    href={item.href}
+                                    className={`flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors ${pathname === item.href ? 'text-orange-500' : 'text-gray-700 hover:text-orange-500'}`}
+                                >
+                                    {/* <item.icon size={16} className="mr-1" /> */}
+                                    {item.name}
+                                    {item.submenu && <ChevronDown size={16} className="ml-1" />}
+                                </Link>
+
+                                {item.submenu && (
+                                    <div className="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 group-hover:translate-y-0 translate-y-2">
+                                        <div className="pt-2">
+                                            <div className="bg-white rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 p-2">
+                                                {item.submenu.map((subitem) => (
+                                                    <div key={subitem.name}>
+                                                        {'href' in subitem ? (
+                                                            <Link
+                                                                href={subitem.href ? subitem.href : ''}
+                                                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-orange-500 rounded-md"
+                                                            >
+                                                                {subitem.name}
+                                                            </Link>
+                                                        ) : (
+                                                            <div className="relative submenu-group">
+                                                                <div className="px-4 py-2 text-sm font-medium text-gray-900">
+                                                                    {subitem.name}
+                                                                </div>
+                                                                <div className="ml-2 mt-1">
+                                                                    {subitem.submenu?.map((nestedItem) => (
+                                                                        <Link
+                                                                            key={nestedItem.name}
+                                                                            href={nestedItem.href}
+                                                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-orange-500 rounded-md"
+                                                                        >
+                                                                            {nestedItem.name}
+                                                                        </Link>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        )}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </nav>
+
+                    {/* CTA Buttons - Desktop */}
+                    <div className="hidden lg:flex items-center space-x-4">
+                        <a
+                            href="tel:+33756935200"
+                            className="flex items-center px-4 py-2 rounded-md bg-orange-500 text-white text-sm font-medium hover:bg-orange-600 transition-colors"
+                        >
+                            <Phone size={16} className="mr-1" />
+                            07 56 93 52 00
+                        </a>
+                        <Link
+                            href="/devis"
+                            className="px-4 py-2 rounded-md bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition-colors"
+                        >
+                            Demander un devis
+                        </Link>
+                    </div>
+
+                    {/* Mobile menu button */}
+                    <div className="lg:hidden">
+                        <button
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="p-2 rounded-md text-gray-700 hover:text-orange-500 hover:bg-gray-100 focus:outline-none"
+                        >
+                            {isOpen ? <X size={24} /> : <Menu size={24} />}
+                        </button>
+                    </div>
+                </div>
+
+                {/* Mobile Navigation */}
+                {isOpen && (
+                    <div className="lg:hidden mt-4 pb-4 border-t border-gray-200">
+                        <nav className="px-2 pt-2 pb-3 space-y-1">
+                            {navigation.map((item) => (
+                                <div key={item.name}>
+                                    <div className="flex items-center">
+                                        <Link
+                                            href={item.href}
+                                            className={`flex-grow flex items-center px-3 py-2 rounded-md text-base font-medium ${pathname === item.href ? 'text-orange-500 bg-orange-50' : 'text-gray-700 hover:text-orange-500 hover:bg-gray-50'}`}
+                                            onClick={() => !item.submenu && closeAllMenus()}
+                                        >
+                                            {/* <item.icon size={18} className="mr-2" /> */}
+                                            {item.name}
+                                        </Link>
+                                        {item.submenu && (
+                                            <button
+                                                onClick={() => toggleSubmenu(item.name)}
+                                                className="p-2 rounded-md text-gray-400 hover:text-gray-500"
+                                            >
+                                                <ChevronDown size={18} className={openSubmenu === item.name ? 'transform rotate-180' : ''} />
+                                            </button>
+                                        )}
+                                    </div>
+                                    {item.submenu && openSubmenu === item.name && (
+                                        <div className="ml-6 mt-1 space-y-1">
+                                            {item.submenu.map((subitem) => (
+                                                <div key={subitem.name}>
+                                                    {'href' in subitem ? (
+                                                        <Link
+                                                            href={subitem.href ? subitem.href : ''}
+                                                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-orange-500 hover:bg-gray-50"
+                                                            onClick={closeAllMenus}
+                                                        >
+                                                            {subitem.name}
+                                                        </Link>
+                                                    ) : (
+                                                        <>
+                                                            <div className="px-3 py-2 text-base font-medium text-gray-900">
+                                                                {subitem.name}
+                                                            </div>
+                                                            <div className="ml-4 mt-1 space-y-1">
+                                                                {subitem.submenu?.map((nestedItem) => (
+                                                                    <Link
+                                                                        key={nestedItem.name}
+                                                                        href={nestedItem.href}
+                                                                        className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-orange-500 hover:bg-gray-50"
+                                                                        onClick={closeAllMenus}
+                                                                    >
+                                                                        {nestedItem.name}
+                                                                    </Link>
+                                                                ))}
+                                                            </div>
+                                                        </>
+                                                    )}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
+                            <div className="pt-4 space-y-2">
+                                <a
+                                    href="tel:+33756935200"
+                                    className="flex items-center justify-center w-full px-4 py-3 rounded-md bg-orange-500 text-white text-base font-medium hover:bg-orange-600 transition-colors"
+                                    onClick={closeAllMenus}
+                                >
+                                    <Phone size={18} className="mr-2" />
+                                    07 56 93 52 00
+                                </a>
+                                <Link
+                                    href="/devis"
+                                    className="flex items-center justify-center w-full px-4 py-3 rounded-md bg-gray-900 text-white text-base font-medium hover:bg-gray-800 transition-colors"
+                                    onClick={closeAllMenus}
+                                >
+                                    Demander un devis
+                                </Link>
+                            </div>
+                        </nav>
+                    </div>
+                )}
+            </div>
+        </header>
+    );
+}

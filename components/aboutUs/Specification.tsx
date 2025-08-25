@@ -41,7 +41,7 @@ const Expertise = () => {
                         </div>
 
                         <p className='text-[15px] font-light text-[#2E2937BF] leading-7 text-justify max-sm:text-center max-lg:text-center'>
-                            Depuis 2003, notre société d’électricité à Nice propose un service complet : diagnostic de panne, dépannage en urgence, installation de tableaux électriques, câblage, mise aux normes NF C 15‑100, et maintenance fiable pour professionnels et particuliers.
+                            Depuis 2008, notre société d’électricité à Nice propose un service complet : diagnostic de panne, dépannage en urgence, installation de tableaux électriques, câblage, mise aux normes NF C 15‑100, et maintenance fiable pour professionnels et particuliers.
                         </p>
 
                     </div>

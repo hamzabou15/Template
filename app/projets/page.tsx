@@ -1,6 +1,6 @@
 import Hero from '@/components/projets/Hero';
 import ListProjects from '@/components/projets/ListProjects';
-import SchemaLocalBusiness from '@/components/schema-local-business';
+import SchemaLocalBusiness from '@/components/SEO/SchemaLocalBusiness';
 import Head from 'next/head';
 import React from 'react';
 
@@ -19,7 +19,7 @@ const page = () => {
                     name="keywords"
                     content="réalisations électricien Nice, projets électriques Nice, électricité générale Nice, installation électrique, rénovation électrique, Electricien Nice Expert"
                 />
-                <link rel="canonical" href="https://electricien-nice.fr/projets" />
+                <link rel="canonical" href="https://electriciennice-expert.fr/projets" />
 
                 {/* Open Graph / Facebook */}
                 <meta
@@ -32,9 +32,9 @@ const page = () => {
                 />
                 <meta
                     property="og:image"
-                    content="https://electricien-nice.fr/images/projets-electricite-nice.jpg"
+                    content="https://electriciennice-expert.fr/images/projets-electricite-nice.jpg"
                 />
-                <meta property="og:url" content="https://electricien-nice.fr/projets" />
+                <meta property="og:url" content="https://electriciennice-expert.fr/projets" />
                 <meta property="og:type" content="website" />
 
                 {/* Twitter */}
@@ -49,7 +49,7 @@ const page = () => {
                 />
                 <meta
                     name="twitter:image"
-                    content="https://electricien-nice.fr/images/projets-electricite-nice.jpg"
+                    content="https://electriciennice-expert.fr/images/projets-electricite-nice.jpg"
                 />
             </Head>
 

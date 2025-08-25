@@ -1,4 +1,9 @@
+# *
 User-agent: *
-Disallow:
+Allow: /
 
+# Host
+Host: https://electriciennice-expert.fr
+
+# Sitemaps
 Sitemap: https://electriciennice-expert.fr/sitemap.xml
