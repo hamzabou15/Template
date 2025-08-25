@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Roboto } from "next/font/google";
 import "../styles/globals.css";
 import Header from "@/components/layout/Header";
@@ -13,6 +13,11 @@ const roboto = Roboto({
   display: 'swap',
   variable: '--font-roboto',
 });
+
+// Viewport configuration (NEW) - Move themeColor here
+export const viewport: Viewport = {
+  themeColor: "#f25000",
+};
 
 // Métadonnées de base pour tout le site
 export const metadata: Metadata = {
@@ -78,7 +83,7 @@ export const metadata: Metadata = {
   },
 
   // Apparence sur mobile et thème
-  themeColor: "#f25000",
+  // REMOVED: themeColor from here (moved to viewport)
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
