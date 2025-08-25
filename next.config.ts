@@ -1,8 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ['schema-dts'],
-  },
+  serverExternalPackages: ['schema-dts'],
   images: {
     domains: ['electriciennice-expert.fr'],
     formats: ['image/webp', 'image/avif'],
