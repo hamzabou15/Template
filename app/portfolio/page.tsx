@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Phone, FileText, ArrowLeft, Home, Building, Wrench, Car, Warehouse } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: "Nos Réalisations | Portfolio d&apos;Électricien à Nice",
+  title: "Nos Réalisations | Portfolio d'Électricien à Nice",
   description: "Découvrez nos réalisations en électricité à Nice et ses environs. Installation, rénovation et mise aux normes électrique pour particuliers et professionnels.",
   keywords: "réalisations électricien nice, portfolio électricien, travaux électriques nice, installation électrique nice, rénovation électrique nice",
   authors: [{ name: "Electricien Nice Expert" }],
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     canonical: '/portfolio',
   },
   openGraph: {
-    title: "Nos Réalisations - Portfolio d&apos;Électricien à Nice",
+    title: "Nos Réalisations - Portfolio d'Électricien à Nice",
     description: "Découvrez nos réalisations en électricité à Nice et ses environs. Installation, rénovation et mise aux normes électrique.",
     url: 'https://electriciennice-expert.fr/portfolio',
     siteName: 'Electricien Nice Expert',
@@ -195,7 +195,7 @@ export default function Portfolio() {
               Nos <span className="text-[#f25000]">Réalisations</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Découvrez nos projets d&apos;installation, rénovation et mise aux normes électrique 
+              Découvrez nos projets d&apos;installation, rénovation et mise aux normes électrique
               réalisés à Nice et dans ses environs.
             </p>
           </div>
@@ -219,14 +219,14 @@ export default function Portfolio() {
                     {project.service}
                   </div>
                 </div>
-                
+
                 <div className="p-6">
                   <div className="flex items-center gap-2 text-gray-500 mb-2">
                     <span className="text-sm">{project.location}</span>
                   </div>
-                  
+
                   <h3 className="text-xl font-bold text-gray-900 mb-3">{project.title}</h3>
-                  
+
                   <div className="flex items-center gap-2 mb-4">
                     <div className="flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-full">
                       {project.type === "Villa" && <Home className="text-[#f25000] h-4 w-4" />}
@@ -237,14 +237,14 @@ export default function Portfolio() {
                       <span className="text-sm text-gray-600">{project.type}</span>
                     </div>
                   </div>
-                  
+
                   <p className="text-gray-600 mb-4 line-clamp-3">{project.description}</p>
-                  
+
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-sm text-gray-500">{project.duration}</span>
                     <span className="text-sm font-semibold text-[#f25000]">{project.budget}</span>
                   </div>
-                  
+
                   <Link href={`/portfolio/${project.slug}`}>
                     <Button className="w-full bg-[#f25000] hover:bg-[#e34600] text-white">
                       Voir les détails du projet
@@ -260,7 +260,7 @@ export default function Portfolio() {
               Vous avez un projet similaire ?
             </h2>
             <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
-              Notre équipe d&apos;électriciens qualifiés est à votre disposition pour réaliser 
+              Notre équipe d&apos;électriciens qualifiés est à votre disposition pour réaliser
               vos projets d&apos;installation, rénovation ou mise aux normes électrique.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

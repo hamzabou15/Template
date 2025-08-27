@@ -188,7 +188,7 @@ export default function Header() {
                             07 56 93 52 00
                         </a>
                         <Link
-                            href="/devis"
+                            href="/devis-electricien-gratuit"
                             className="px-4 py-2 rounded-md bg-gray-900 text-white text-sm font-medium hover:bg-gray-800 transition-colors"
                         >
                             Demander un devis
@@ -277,7 +277,7 @@ export default function Header() {
                                     07 56 93 52 00
                                 </a>
                                 <Link
-                                    href="/devis"
+                                    href="/devis-electricien-gratuit"
                                     className="flex items-center justify-center w-full px-4 py-3 rounded-md bg-gray-900 text-white text-base font-medium hover:bg-gray-800 transition-colors"
                                     onClick={closeAllMenus}
                                 >
